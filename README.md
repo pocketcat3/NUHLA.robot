@@ -8,4 +8,4 @@
 ● вам потрібно мати машинку QUANT (https://www.robostore.com.ua/mashinka-robot-arduino-dlya-sorevnovaniy-impro-quant-sport/)
 
 
-● перейдіть на головну сторінку цього проекту, натисніть на зелену кнопочку <<CODE>> і виберіть пункт <<Download ZIP>>
+● перейдіть на головну сторінку цього проекту, натисніть на зелену кнопочку CODE і виберіть пункт Download ZIP
