@@ -1,5 +1,10 @@
+const int MSonar = A6;
+int datafromsensor = 0;
+float distance = 0;
+
 
 void setup() {
+  Serial.begin(9600);
   //right
   pinMode(5, OUTPUT);//speed
   pinMode(9, OUTPUT);//nazad
@@ -8,20 +13,22 @@ void setup() {
   pinMode(7, OUTPUT);//go
   pinMode(6, OUTPUT);//nazad
   pinMode(10, OUTPUT);//speed
+
+  pinMode(MSonar, INPUT);
 }
 
 void loop() {
-  goforward();
-  delay(1000);
-  goback();
-  delay(1000);
-  turnleft();
-  delay(1000);
-  turnright();
-  delay(1000);
+  datafromsensor = analogRead(MSonar);
+  distance = 27, 86 * pow(datafromsensor, -1.15);// в сантиметрах
+  if (distance <= 5) {
+    turnright();
+  } else {
+    goforward();
+  }
+  Serial.println(distance);
 }
 
-void goforward(){
+void goforward() {
   analogWrite(10, 150);
   digitalWrite(9, 0);
   digitalWrite(8, 1);
@@ -30,7 +37,7 @@ void goforward(){
   analogWrite(5, 250);
 }
 
-void goback(){
+void goback() {
   analogWrite(10, 150);
   digitalWrite(9, 1);
   digitalWrite(8, 0);
@@ -39,7 +46,7 @@ void goback(){
   analogWrite(5, 250);
 }
 
-void turnright(){
+void turnright() {
   analogWrite(10, 150);
   digitalWrite(9, 1);
   digitalWrite(8, 0);
@@ -48,7 +55,7 @@ void turnright(){
   analogWrite(5, 250);
 }
 
-void turnleft(){
+void turnleft() {
   analogWrite(10, 150);
   digitalWrite(9, 0);
   digitalWrite(8, 1);
