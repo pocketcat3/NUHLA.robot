@@ -14,35 +14,36 @@ void setup() {
   pinMode(6, OUTPUT);//nazad
   pinMode(10, OUTPUT);//speed
 
-  pinMode(MSonar, INPUT);
+  
 }
 
 void loop() {
-  if (analogRead(MSonar) <= 60 ) {
-     goforward();
-     if (analogRead(LSonar) >= 200) {
+  if (analogRead(A5) >= 180) {
         turnright();
-     }else if (analogRead(RSonar) >= 190){
+     }else if (analogRead(A7) >= 160){
         turnleft();
+     }
+  else  if (analogRead(A6) <= 20 ) {
+     goforward();
      }
   } 
            
    
- Serial.println(analogRead(LSonar));
- Serial.println(analogRead(MSonar));
- Serial.println(analogRead(RSonar));
-  Serial.println();
- Serial.println();
- delay(5000);
-}
+// Serial.println(analogRead(A5));
+//Serial.println(analogRead(A6));
+// Serial.println(analogRead(A7));
+//Serial.println("");
+//Serial.println("");
+// delay(500);}
+
 
 void goforward() {
-  analogWrite(10, 50);
+  analogWrite(10, 55);
   digitalWrite(9, 0);
   digitalWrite(8, 1);
   digitalWrite(7, 1);
   digitalWrite(6, 0);
-  analogWrite(5, 56);
+  analogWrite(5, 50);
 }
 
 void goback() {
@@ -55,21 +56,21 @@ void goback() {
 }
 
 void turnright() {
-  analogWrite(10, 50);
+  analogWrite(10, 100);
   digitalWrite(9, 1);
   digitalWrite(8, 0);
   digitalWrite(7, 1);
   digitalWrite(6, 0);
-  analogWrite(5, 50);
+  analogWrite(5, 100);
 }
 
 void turnleft() {
-  analogWrite(10, 50);
+  analogWrite(10, 100);
   digitalWrite(9, 0);
   digitalWrite(8, 1);
   digitalWrite(7, 0);
   digitalWrite(6, 1);
-  analogWrite(5, 50);
+  analogWrite(5, 100);
 }
 
 void stopMashine() {
